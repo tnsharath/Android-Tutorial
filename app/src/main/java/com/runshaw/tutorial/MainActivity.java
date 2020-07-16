@@ -2,6 +2,7 @@ package com.runshaw.tutorial;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -115,6 +116,21 @@ public class MainActivity extends AppCompatActivity {
     public void selectTime(View view) {
         String selectedTime = timePicker.getHour() + ":" + timePicker.getMinute();
         Toast.makeText(this, selectedTime, Toast.LENGTH_LONG).show();
+    }
+
+    public void goToHome(View view) {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToRelativeLayout(View view) {
+        Intent intent = new Intent(this, RelativeLayoutExampleActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToLogin(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     /**

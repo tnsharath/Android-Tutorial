@@ -116,13 +116,32 @@
     <TimePicker
         android:id="@+id/timePicker"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="selectTime"
         android:text="Select Time"
+        android:visibility="gone" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goToHome"
+        android:text="Go To Home"
+        android:visibility="visible" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goToRelativeLayout"
+        android:text="Go To Relative Layout"
         android:visibility="visible" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login Screen"
+        android:onClick="goToLogin"/>
 </LinearLayout>
