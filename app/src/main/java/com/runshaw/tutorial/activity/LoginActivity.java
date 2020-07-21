@@ -1,4 +1,4 @@
-package com.runshaw.tutorial;
+package com.runshaw.tutorial.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.runshaw.tutorial.R;
+import com.runshaw.tutorial.data.SharedPref;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -41,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
 
         if (enteredUserID.equals(sharedPrefUserID) && enteredPassword.equals(sharedPrefPassword)){
             Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, TodoActivity.class);
+            startActivity(intent);
         } else{
             Toast
                     .makeText(this, "UserID or Password Incorrect!! Please try again", Toast.LENGTH_LONG)

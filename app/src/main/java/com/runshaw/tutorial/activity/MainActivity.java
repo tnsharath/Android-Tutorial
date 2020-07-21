@@ -1,4 +1,4 @@
-package com.runshaw.tutorial;
+package com.runshaw.tutorial.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import com.runshaw.tutorial.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -131,6 +133,10 @@ public class MainActivity extends AppCompatActivity {
     public void goToLogin(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+    }
+
+    public void goToFragment(View view) {
+        startActivity(new Intent(this, FragmentHostActivity.class));
     }
 
     /**

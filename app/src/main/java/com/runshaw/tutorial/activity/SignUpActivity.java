@@ -1,4 +1,4 @@
-package com.runshaw.tutorial;
+package com.runshaw.tutorial.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.runshaw.tutorial.R;
+import com.runshaw.tutorial.data.SharedPref;
 
 public class SignUpActivity extends AppCompatActivity {
 

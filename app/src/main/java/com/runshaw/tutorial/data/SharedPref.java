@@ -1,4 +1,4 @@
-package com.runshaw.tutorial;
+package com.runshaw.tutorial.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
