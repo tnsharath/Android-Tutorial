@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
@@ -11,8 +12,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.runshaw.tutorial.NotesModel;
 import com.runshaw.tutorial.R;
+import com.runshaw.tutorial.data.DbHelper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,6 +31,8 @@ public class MakeNoteActivity extends AppCompatActivity {
     String selectedDate = "";
     String selectedTime = "";
 
+    DbHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +42,7 @@ public class MakeNoteActivity extends AppCompatActivity {
         etDesc = findViewById(R.id.etDesc);
         btnSelectDate = findViewById(R.id.btnSelectDate);
         btnSelectTime = findViewById(R.id.btnSelectTime);
+        dbHelper = new DbHelper(this);
     }
 
     public void selectDate(View view) {
@@ -45,7 +52,6 @@ public class MakeNoteActivity extends AppCompatActivity {
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
-
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -58,7 +64,7 @@ public class MakeNoteActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    public void selectTime(View view){
+    public void selectTime(View view) {
         final Calendar c = Calendar.getInstance();
         int mHour = c.get(Calendar.HOUR_OF_DAY);
         int mMinute = c.get(Calendar.MINUTE);
@@ -66,13 +72,13 @@ public class MakeNoteActivity extends AppCompatActivity {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                selectedTime = hourOfDay +":" + minute;
+                selectedTime = hourOfDay + ":" + minute;
 
                 try {
                     final SimpleDateFormat sdf = new SimpleDateFormat("H:mm");
                     final Date date = sdf.parse(selectedTime);
-                    selectedTime = new SimpleDateFormat("K:mm").format(date);
-                }catch (ParseException e){
+                    selectedTime = new SimpleDateFormat("h:mm a").format(date);
+                } catch (ParseException e) {
                     e.printStackTrace();
                 }
 
@@ -85,8 +91,12 @@ public class MakeNoteActivity extends AppCompatActivity {
     public void submit(View view) {
         String title = etTitle.getText().toString();
         String desc = etDesc.getText().toString();
-        if (!title.isEmpty() || !desc.isEmpty()){
-            //TODO push data into database
+        if (!title.isEmpty() || !desc.isEmpty()) {
+            NotesModel notesModel = new NotesModel(title, desc, selectedDate, selectedTime);
+            dbHelper.insertNotesValue(notesModel);
+            Toast.makeText(this, "Note Successful", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, TodoActivity.class));
+            finish();
         }
     }
 }

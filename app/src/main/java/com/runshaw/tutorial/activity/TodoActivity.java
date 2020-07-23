@@ -55,6 +55,7 @@ public class TodoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TodoActivity.this, MakeNoteActivity.class));
+                finish();
             }
         });
     }
