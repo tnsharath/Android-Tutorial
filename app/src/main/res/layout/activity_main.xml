@@ -149,4 +149,10 @@
         android:layout_height="wrap_content"
         android:text="Fragment"
         android:onClick="goToFragment"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UI"
+        android:onClick="goToUI"/>
 </LinearLayout>

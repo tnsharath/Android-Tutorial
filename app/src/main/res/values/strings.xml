@@ -14,4 +14,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="test_2_fragment">Test 2 Fragment</string>
+    <string name="menu">Menu</string>
+    <string name="view_cart_5_items">VIEW CART (5 ITEMS)</string>
+    <string name="starter">Starter</string>
+    <string name="background_frame">background_frame</string>
 </resources>

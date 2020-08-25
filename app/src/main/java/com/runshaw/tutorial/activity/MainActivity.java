@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tvResult;
     DatePicker datePicker;
     TimePicker timePicker;
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToHome(View view) {
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
         startActivity(intent);
     }
 
@@ -137,6 +140,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToFragment(View view) {
         startActivity(new Intent(this, FragmentHostActivity.class));
+    }
+
+    public void goToUI(View view) {
+
+        int a, b;
+        a = 0;
+        b= 10;
+
+        int c;
+
+        try{
+            c = b / a;
+        } catch (Exception e){
+            Log.d(TAG, "goToUI: Exception handled");
+            Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+        }
+
+        startActivity(new Intent(this, UIActivity.class));
     }
 
     /**
